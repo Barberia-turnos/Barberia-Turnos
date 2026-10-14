@@ -1,0 +1,27 @@
+TOMÁS OVIEDO — BARBERÍA · TURNOS
+
+ARCHIVOS
+- index.html: página web para GitHub Pages.
+- firestore.rules: reglas de seguridad de Firestore de referencia.
+
+CÓMO ACTUALIZAR GITHUB PAGES
+1. Descomprimí el ZIP.
+2. Entrá al repositorio Barberia-Turnos en GitHub.
+3. Reemplazá el index.html existente por el index.html de esta carpeta.
+4. Guardá los cambios con Commit changes.
+5. Esperá unos minutos y abrí la página publicada. Si no ves los cambios, recargá con Ctrl+F5.
+
+CAMBIOS DE ESTA VERSIÓN
+- Ajustes visuales de tarjetas, botones, horarios y modales.
+- Mejor respuesta visual al tocar horarios y controles.
+- Mejoras para pantallas chicas y accesibilidad de teclado.
+- Mensaje de WhatsApp más claro al consultar un turno.
+- Protección extra al borrar toda la semana: pide escribir BORRAR.
+- Se conserva la ubicación, horarios, Instagram, WhatsApp, calendario y la integración Firebase existente.
+
+FIREBASE
+La página usa el proyecto Firebase ya configurado en el HTML. No cambies la configuración si es la correcta.
+Las reglas incluidas son una referencia coherente con el código actual: disponibilidad pública en `bookings` y datos privados en `bookingDetails`, accesibles solo al administrador. Antes de reemplazar las reglas activas en Firebase, revisá que coincidan con la configuración y el acceso que necesitás. No publiques claves privadas ni contraseñas.
+
+IMPORTANTE
+Este ZIP prepara los archivos; no publica automáticamente los cambios en GitHub ni modifica Firebase por sí solo.
