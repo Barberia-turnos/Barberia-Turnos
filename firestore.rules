@@ -1,0 +1,36 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // Los clientes solo necesitan leer disponibilidad; las reservas las gestiona el administrador.
+    match /bookings/{id} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Los nombres y servicios de los clientes solo son visibles para el administrador.
+    match /bookingDetails/{id} {
+      allow read, create, update, delete: if isAdmin();
+    }
+
+    // Cada administrador puede consultar su propio documento; nadie puede modificarlo desde la web.
+    match /admins/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    // Clientes guardados (nombre, alias, servicio, número): solo el administrador.
+    match /clients/{id} {
+      allow read, create, update, delete: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
